@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>中二普通電腦科_聊天機械人_核心筆記</title>
+<style>
+:root{--bk:#1A1A1A;--yl:#FFD600;--or:#FF5722;--gy:#F4F4F4;--bd:3px solid #000;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang HK","Microsoft JhengHei",system-ui,sans-serif;color:var(--bk);background:#999;}
+.page{width:210mm;height:297mm;background:#fff;margin:8mm auto;padding:11mm 12mm;page-break-after:always;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+@media print{body{background:#fff;}.page{margin:0;box-shadow:none;}.ans{display:block !important;}@page{size:A4;margin:0;}}
+h1{font-size:22pt;border-bottom:var(--bd);padding-bottom:2mm;letter-spacing:1px;}
+h2{font-size:13.5pt;margin:3.5mm 0 2mm;background:var(--yl);display:inline-block;padding:1mm 3mm;border:var(--bd);}
+.tag{font-size:8.5pt;font-weight:700;border:2px solid #000;padding:.4mm 2mm;display:inline-block;margin-right:1.5mm;background:#fff;}
+.tag.y{background:var(--yl);}.tag.o{background:var(--or);color:#fff;}
+p,li{font-size:10.5pt;line-height:1.5;}
+.kicker{font-size:9pt;font-weight:700;letter-spacing:2px;color:#555;text-transform:uppercase;}
+.sec{margin-top:3mm;}
+.box{border:var(--bd);padding:2.5mm 3mm;margin-top:2.5mm;background:#fff;}
+.box.g{background:var(--gy);}
+.box.o{border-color:var(--or);border-left-width:8px;}
+.star{font-weight:700;}
+.quiz{border:var(--bd);margin-top:auto;background:var(--gy);padding:2.5mm 3mm;}
+.quiz h3{font-size:11pt;background:#000;color:#fff;display:inline-block;padding:.8mm 3mm;margin-bottom:1.5mm;}
+.q{font-size:10pt;margin:1mm 0;cursor:pointer;}
+.ans{display:none;font-size:9pt;background:var(--yl);border:2px solid #000;padding:1mm 2mm;margin:.5mm 0 1.5mm;}
+.q:hover{color:var(--or);}
+.disc{border:2.5px dashed var(--or);padding:2mm 3mm;margin-top:2mm;background:#fff;}
+.disc b{color:var(--or);}
+.guide{font-size:9pt;color:#444;margin-top:1mm;}
+.foot{position:absolute;bottom:6mm;left:12mm;right:12mm;display:flex;justify-content:space-between;font-size:8.5pt;font-weight:700;border-top:2px solid #000;padding-top:1.5mm;}
+svg{display:block;margin:2mm auto;max-width:100%;}
+.two{display:flex;gap:4mm;}.two>div{flex:1;}
+.def{border-left:6px solid var(--or);padding:1mm 3mm;background:var(--gy);margin:2mm 0;font-size:10pt;}
+table.cornell{width:100%;border-collapse:collapse;flex:1;}
+table.cornell td,table.cornell th{border:2.5px solid #000;vertical-align:top;padding:2mm;}
+.line{height:8.5mm;border-bottom:1.5px solid #bbb;}
+.chk{font-size:9.5pt;margin:1mm 0;}
+.chat{border:var(--bd);padding:2mm 3mm;background:#fff;}
+.bub{border:2px solid #000;border-radius:10px;padding:1mm 2.5mm;margin:1mm 0;font-size:9.5pt;max-width:92%;}
+.bub.l{background:var(--gy);}.bub.r{background:var(--yl);margin-left:auto;}
+</style>
+</head>
+<body>
+
+<!-- ═══════ 第 1 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜1/8</div>
+<h1>咩係聊天機械人？</h1>
+<div class="sec"><span class="tag y">⭐️ 必讀</span><span class="tag">⭐️⭐️ 理解</span><span class="tag o">⭐️⭐️⭐️ 思考</span></div>
+<div class="sec"><h2>定義：識傾計嘅軟件代理</h2>
+<p><span class="star">⭐️</span> <b>聊天機械人</b>係一種<b>軟件代理</b>——透過「傾計」幫你解答問題嘅應用程式。你可以用<b>文字</b>或者<b>語音</b>問問題，佢會用同樣方法回答你。簡單講：<b>你問、佢答，一來一往</b>。</p></div>
+<div class="sec"><h2>香港學生日日都見到</h2>
+<ul style="margin-left:6mm;">
+<li>🏦 <b>銀行 App 客服</b>：查戶口結餘、報失信用卡</li>
+<li>🍔 <b>Deliveroo／外賣 App</b>：查訂單去向、申請退款</li>
+<li>🚇 <b>MTR 查詢</b>：查班次、票價、失物</li>
+<li>📚 <b>學校圖書館機械人</b>：查書喺邊個架、續借</li>
+</ul>
+<p style="margin-top:1.5mm;"><b>點解咁多人用？</b>針對特定場景<b>快而準</b>、<b>24 小時</b>唔休息、幫公司<b>慳人手時間</b>。</p></div>
+
+<div class="sec"><h2>三大種類速覽（下一頁詳細拆解）</h2></div>
+<svg width="660" height="165" viewBox="0 0 660 165">
+<rect x="10" y="10" width="200" height="145" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="10" y="10" width="200" height="30" fill="#FFD600" stroke="#000" stroke-width="3"/>
+<text x="110" y="31" font-size="14" font-weight="bold" text-anchor="middle">① 劇本聊天機械人</text>
+<circle cx="110" cy="68" r="14" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="110" y1="82" x2="80" y2="108" stroke="#000" stroke-width="2.5"/><line x1="110" y1="82" x2="110" y2="108" stroke="#000" stroke-width="2.5"/><line x1="110" y1="82" x2="140" y2="108" stroke="#000" stroke-width="2.5"/>
+<rect x="62" y="108" width="36" height="18" fill="#fff" stroke="#000" stroke-width="2.5"/><rect x="92" y="108" width="36" height="18" fill="#fff" stroke="#000" stroke-width="2.5"/><rect x="122" y="108" width="36" height="18" fill="#fff" stroke="#000" stroke-width="2.5"/>
+<text x="110" y="146" font-size="11" text-anchor="middle">跟住預設選項流程行</text>
+<rect x="230" y="10" width="200" height="145" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="230" y="10" width="200" height="30" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="330" y="31" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">② AI 聊天機械人</text>
+<circle cx="310" cy="75" r="20" fill="#FFD600" stroke="#000" stroke-width="3"/><path d="M300 70 q5 -8 11 -3 q7 -5 12 3 M302 82 h18" fill="none" stroke="#000" stroke-width="2.5"/>
+<path d="M352 62 a10 6 0 0 1 20 0 v26 a10 6 0 0 1 -20 0 z" fill="#fff" stroke="#000" stroke-width="2.5"/><path d="M352 62 a10 6 0 0 0 20 0" fill="none" stroke="#000" stroke-width="2.5"/>
+<line x1="332" y1="75" x2="350" y2="75" stroke="#000" stroke-width="2.5"/><polygon points="350,75 343,71 343,79" fill="#000"/>
+<text x="330" y="120" font-size="11" text-anchor="middle">機器學習 ＋ 知識庫</text>
+<text x="330" y="146" font-size="11" text-anchor="middle">自動搵出合適回應</text>
+<rect x="450" y="10" width="200" height="145" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="450" y="10" width="200" height="30" fill="#1A1A1A" stroke="#000" stroke-width="3"/>
+<text x="550" y="31" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">③ 代理聊天機械人</text>
+<rect x="468" y="58" width="34" height="26" rx="6" fill="#FFD600" stroke="#000" stroke-width="3"/><circle cx="478" cy="68" r="3" fill="#000"/><circle cx="492" cy="68" r="3" fill="#000"/><line x1="480" y1="76" x2="490" y2="76" stroke="#000" stroke-width="2"/>
+<line x1="505" y1="71" x2="575" y2="71" stroke="#000" stroke-width="3" stroke-dasharray="7 5"/><polygon points="575,71 566,65 566,77" fill="#000"/>
+<circle cx="600" cy="65" r="13" fill="#fff" stroke="#000" stroke-width="3"/><path d="M587 85 a13 8 0 0 1 26 0" fill="#fff" stroke="#000" stroke-width="3"/><path d="M611 58 a9 9 0 0 1 4 12" fill="none" stroke="#000" stroke-width="2.5"/>
+<text x="550" y="115" font-size="11" text-anchor="middle">簡單問題機械人答</text>
+<text x="550" y="132" font-size="11" text-anchor="middle">複雜問題 → 轉真人客服</text>
+<text x="550" y="150" font-size="11" text-anchor="middle" font-weight="bold">半自動接力</text>
+</svg>
+
+<div class="box g"><span class="star">⭐️⭐️⭐️</span> <b>諗深一層：</b>大部分聊天機械人只係靠<b>預設指令</b>或者<b>分析關鍵字</b>去回應，仲未係真正「識思考」。咁點樣先算機器「識諗」？→ 第 3 頁：圖靈測試。</div>
+
+<div class="quiz"><h3>✓✗ 情景快測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. 阿晶用銀行 App 打字問「幾點閂門？」，系統即刻用文字答佢——呢個係咪聊天機械人嘅典型用法？</div>
+<div class="ans">✓ 係。用文字（或語音）一問一答、針對特定場景解答問題，正正係聊天機械人嘅定義。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 所有聊天機械人都一定要用人工智能先整到出嚟？</div>
+<div class="ans">✗ 錯。劇本聊天機械人只靠預設選項同關鍵字，唔使 AI 都整到；只有 AI 聊天機械人先用機器學習。</div>
+<div class="disc"><b>💬 討論站：</b>你最近一個月有冇用過聊天機械人？佢答到你想問嘅嘢嗎？<div class="guide">引導：試講出（1）邊個 App／場景、（2）佢答得好唔好、（3）你估佢係上面邊一類？點解？</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 1 頁｜認識聊天機械人</span></div>
+</div>
+
+<!-- ═══════ 第 2 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜2/8</div>
+<h1>三大種類詳解</h1>
+<div class="sec two">
+<div><h2>① 劇本機械人</h2>
+<p><span class="star">⭐️</span> 預設選項俾你揀＋按回應問跟進問題，或靠<b>關鍵詞</b>辨別。</p>
+<p>✅ 快、準、<b>成本低</b>｜❌ 答唔到<b>劇本以外</b>嘅嘢</p>
+<p>🧠 連結：<b>條件語句</b>——「如果揀 A，就行呢條路」。</p></div>
+<div><h2>③ 代理機械人（精讀）</h2>
+<p><span class="star">⭐️</span> <b>半自動</b>客服：簡單問題機械人<b>分流</b>；複雜問題<b>轉介真人</b>接手。</p>
+<p>📝 問答記錄會用嚟<b>完善知識庫</b>，令機械人愈答愈叻。</p>
+<p>🍔 例子：Deliveroo 客服、銀行熱線。</p></div>
+</div>
+
+<div class="sec"><h2>② AI 聊天機械人</h2>
+<p><span class="star">⭐️</span> 靠人工智能入面嘅<b>機器學習</b>，<b>自動</b>搵出合適回應，俾到用戶真實嘅感覺。佢點做到？靠以下兩件法寶：</p></div>
+
+<svg width="660" height="195" viewBox="0 0 660 195">
+<rect x="10" y="10" width="315" height="175" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="10" y="10" width="315" height="28" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="167" y="30" font-size="13.5" font-weight="bold" fill="#fff" text-anchor="middle">法寶一：文字分析</text>
+<rect x="35" y="50" width="265" height="34" rx="17" fill="#FFD600" stroke="#000" stroke-width="3"/>
+<text x="167" y="72" font-size="13" font-weight="bold" text-anchor="middle">「聽日會唔會落雨？」</text>
+<line x1="167" y1="84" x2="167" y2="102" stroke="#000" stroke-width="2.5"/><polygon points="167,102 162,94 172,94" fill="#000"/>
+<rect x="55" y="105" width="100" height="24" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="105" y="122" font-size="11.5" text-anchor="middle">關鍵詞：聽日</text>
+<rect x="180" y="105" width="100" height="24" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="230" y="122" font-size="11.5" text-anchor="middle">關鍵詞：落雨</text>
+<text x="167" y="155" font-size="11.5" text-anchor="middle">先拆句子，搵出關鍵詞彙，</text>
+<text x="167" y="171" font-size="11.5" text-anchor="middle">理解你想問乜</text>
+<rect x="335" y="10" width="315" height="175" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="335" y="10" width="315" height="28" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="492" y="30" font-size="13.5" font-weight="bold" fill="#fff" text-anchor="middle">法寶二：知識庫 ＋ 機器學習</text>
+<path d="M375 52 a22 8 0 0 1 44 0 v40 a22 8 0 0 1 -44 0 z" fill="#fff" stroke="#000" stroke-width="3"/>
+<path d="M375 52 a22 8 0 0 0 44 0 M375 65 a22 8 0 0 0 44 0 M375 78 a22 8 0 0 0 44 0" fill="none" stroke="#000" stroke-width="2.5"/>
+<text x="397" y="115" font-size="11" font-weight="bold" text-anchor="middle">知識庫</text>
+<line x1="423" y1="72" x2="462" y2="72" stroke="#000" stroke-width="3"/><polygon points="462,72 453,67 453,77" fill="#000"/>
+<circle cx="502" cy="72" r="24" fill="#FFD600" stroke="#000" stroke-width="3"/><path d="M491 66 q5 -8 12 -3 q7 -5 12 3 M493 80 h20" fill="none" stroke="#000" stroke-width="2.5"/>
+<text x="502" y="115" font-size="11" font-weight="bold" text-anchor="middle">機器學習</text>
+<line x1="526" y1="72" x2="562" y2="72" stroke="#000" stroke-width="3"/><polygon points="562,72 553,67 553,77" fill="#000"/>
+<rect x="564" y="55" width="70" height="34" rx="8" fill="#1A1A1A"/><text x="599" y="69" font-size="10.5" fill="#fff" text-anchor="middle" font-weight="bold">合適回應</text><text x="599" y="83" font-size="10" fill="#FFD600" text-anchor="middle">似真人口吻</text>
+<text x="492" y="148" font-size="11.5" text-anchor="middle">喺大量整理咗嘅問答資料中學習，</text>
+<text x="492" y="164" font-size="11.5" text-anchor="middle">愈多數據，答得愈似人</text>
+</svg>
+
+<div class="two">
+<div class="box"><b>🌐 常見 AI 機械人</b><p>ChatGPT、Gemini、Copilot 等——乜都問得，但記住：佢哋嘅答案係「砌」出嚟，未必百分百真確（第 5 頁有真實中伏事件）。</p></div>
+<div class="box g"><span class="star">⭐️⭐️⭐️</span> <b>諗深一層：</b>AI 機械人能力<b>受限於知識庫內容</b>——知識庫冇嘅嘢，佢可能答唔到，甚至「作」個答案俾你（呢種現象叫<b>「幻覺」</b>）。</div>
+</div>
+
+<div class="quiz"><h3>✓✗ 情景快測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. 整 AI 聊天機械人，要建立乜嘢嚟做機器學習同訓練？</div>
+<div class="ans">知識庫。整理好嘅大量問題同回應資料庫，係 AI 機械人學習同搜尋答案嘅基礎。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 劇本機械人用「你揀 A 就去呢度、揀 B 就去嗰度」嘅流程——呢個係邊個計算思維概念？</div>
+<div class="ans">條件語句（如果……就……）。唔同選擇行唔同分支，正係條件語句嘅應用。</div>
+<div class="disc"><b>💬 討論站：</b>AI 機械人「答得似人」同「答得啱」係咪同一件事？試舉一個「似人但答錯」嘅可能情況。<div class="guide">引導：諗吓知識庫嘅限制——如果資料過咗期、或者網上本身就流傳緊錯嘅資訊，AI 會點答？佢嘅語氣會唔會照樣好自信？</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 2 頁｜三大種類詳解</span></div>
+</div>
+
+<!-- ═══════ 第 3 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜3/8</div>
+<h1>重點專頁：圖靈測試</h1>
+<div class="sec"><h2>背景：機器識唔識諗？</h2>
+<p><span class="star">⭐️</span> 1950 年，英國數學家<b>圖靈</b>拋出一條大問題：<b>「機器能思考嗎？」</b>佢設計咗一個測試去判斷——就係出名嘅<b>圖靈測試</b>。</p></div>
+<div class="sec"><h2>測試點樣玩？</h2>
+<p><span class="star">⭐️</span> 測試人員同「神秘對象」<b>只用文字傾計</b>，見唔到樣、聽唔到聲。神秘對象入面<b>一個係真人、一個係機器</b>。如果測試人員<b>分唔出邊個係機器</b>，部機器就算通過測試，可以判斷佢<b>擁有思考能力</b>。</p></div>
+
+<svg width="660" height="205" viewBox="0 0 660 205">
+<rect x="10" y="30" width="180" height="120" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<circle cx="100" cy="68" r="17" fill="#FFD600" stroke="#000" stroke-width="3"/>
+<path d="M78 108 a22 14 0 0 1 44 0" fill="#FFD600" stroke="#000" stroke-width="3"/>
+<rect x="72" y="118" width="56" height="14" fill="#fff" stroke="#000" stroke-width="2.5"/>
+<text x="100" y="143" font-size="13" font-weight="bold" text-anchor="middle">測試人員</text>
+<text x="100" y="163" font-size="11" text-anchor="middle">（見唔到對方）</text>
+<rect x="225" y="30" width="16" height="120" fill="#1A1A1A"/>
+<text x="233" y="95" font-size="13" fill="#FFD600" text-anchor="middle" font-weight="bold" transform="rotate(90 233 95)">隔開！</text>
+<line x1="195" y1="80" x2="220" y2="80" stroke="#000" stroke-width="3"/><polygon points="220,80 212,75 212,85" fill="#000"/>
+<line x1="245" y1="100" x2="270" y2="100" stroke="#000" stroke-width="3"/><polygon points="270,100 262,95 262,105" fill="#000"/>
+<rect x="275" y="30" width="180" height="120" fill="#fff" stroke="#000" stroke-width="3"/>
+<circle cx="365" cy="68" r="17" fill="#fff" stroke="#000" stroke-width="3"/>
+<path d="M343 108 a22 14 0 0 1 44 0" fill="#fff" stroke="#000" stroke-width="3"/>
+<text x="365" y="128" font-size="13" font-weight="bold" text-anchor="middle">對象 A：真人</text>
+<text x="365" y="146" font-size="11" text-anchor="middle">（用文字回答）</text>
+<rect x="470" y="30" width="180" height="120" fill="#fff" stroke="#000" stroke-width="3"/>
+<rect x="525" y="52" width="40" height="30" rx="7" fill="#FFD600" stroke="#000" stroke-width="3"/><circle cx="537" cy="64" r="3.5" fill="#000"/><circle cx="553" cy="64" r="3.5" fill="#000"/><line x1="539" y1="74" x2="551" y2="74" stroke="#000" stroke-width="2"/><line x1="545" y1="52" x2="545" y2="42" stroke="#000" stroke-width="2.5"/><circle cx="545" cy="40" r="3" fill="#FF5722"/>
+<rect x="532" y="86" width="26" height="20" fill="#1A1A1A"/>
+<text x="560" y="128" font-size="13" font-weight="bold" text-anchor="middle">對象 B：機器</text>
+<text x="560" y="146" font-size="11" text-anchor="middle">（用文字回答）</text>
+<rect x="10" y="168" width="640" height="28" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="330" y="188" font-size="13.5" font-weight="bold" fill="#fff" text-anchor="middle">分唔出 A／B 邊個係機器 ＝ 通過圖靈測試 ＝ 視為有「思考能力」</text>
+</svg>
+
+<div class="sec"><h2>兩個關鍵理解</h2>
+<div class="def"><span class="star">⭐️⭐️</span> <b>測「似唔似人」，唔係測「答唔答得啱」</b>：重點係機器嘅回應能唔能夠<b>模仿到人類嘅談吐</b>，令真人分唔出。</div>
+<div class="def"><span class="star">⭐️⭐️⭐️</span> <b>而家嘅 AI 過唔過到？</b>現代 AI 喺短對話入面有時真係呃到人，但佢哋其實係靠<b>機器學習同大量數據砌出嚟嘅答案</b>。課本講得清楚：現時聊天機械人<b>始終未達到真正嘅「思考」</b>——能真正同人類溝通嘅機器仲未出現。</div></div>
+
+<div class="quiz"><h3>✓✗ 情景快測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. 俊熙同神秘網友傾咗半個鐘計都分唔出對方係咪 AI——咁即係證明咗個 AI 識思考？</div>
+<div class="ans">✗ 唔能夠咁快斷定。通過測試只代表「似人」；但似人唔等於真係理解緊。佢可能只係靠數據砌出似人嘅答案。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 圖靈測試入面，測試人員可以見到對方個樣先嚟判斷？</div>
+<div class="ans">✗ 錯。測試只透過文字對話進行，見樣聽聲就會直接穿煲，失去測試意義。</div>
+<div class="disc"><b>💬 討論站：</b>圖靈測試測到「似人」，但測唔測到「真係明白」？如果一部機械人背熟晒全港中二學生嘅常用對答，佢算唔算「識諗」？<div class="guide">引導：分正反兩邊諗——正方：分唔出就等於有思考；反方：背答案只係模仿，唔係理解。你企邊邊？點解？</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 3 頁｜圖靈測試</span></div>
+</div>
+
+<!-- ═══════ 第 4 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜4/8</div>
+<h1>實戰：真人定 AI？估估吓 🕵️</h1>
+<div class="sec"><h2>任務：你而家就係測試人員</h2>
+<p><span class="star">⭐️</span> 以下係兩段網上對話。<b>一段係真人、一段係 AI。</b>睇完之後，同組員講出你嘅判斷同埋<b>證據</b>，先好撳答案！</p></div>
+
+<div class="two">
+<div class="chat"><b>📱 對話 A</b>
+<div class="bub l">你：喂，今日小息做咗咩呀？</div>
+<div class="bub r">A：今日小息我喺課室溫習咗十五分鐘英文生字，之後去咗小食部買咗一包餅乾。你今日小息做咗咩呢？</div>
+<div class="bub l">你：咁你而家心情點呀？</div>
+<div class="bub r">A：我而家心情相當愉快，多謝你嘅關心！希望你今日都過得開心順利。有咩可以幫到你？</div>
+</div>
+<div class="chat"><b>📱 對話 B</b>
+<div class="bub l">你：喂，今日小息做咗咩呀？</div>
+<div class="bub r">B：冇啊，去咗打波囉。</div>
+<div class="bub l">你：咁你而家心情點呀？</div>
+<div class="bub r">B：輕鬆啦，下次贏番咪得啦！你打唔打啊？</div>
+</div>
+</div>
+
+<div class="quiz" style="margin-top:3mm;"><h3>🎯 你嘅判斷（撳開揭曉）</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">對話 A 係真人定 AI？你嘅證據係咩？</div>
+<div class="ans">A 係 AI 🤖。證據：</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">對話 B 係真人定 AI？你嘅證據係咩？</div>
+<div class="ans">B 係真人 🧑。證據：</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">總結：分辨 AI 嘅三大蛛絲馬跡係咩？</div>
+<div class="ans">① 回覆極快又工整、零錯字；② 語氣過分有禮、答案樣樣平均冇立場；③ 冇真實生活細節同即場感受，問佢「而家望到咩」就露底。</div></div>
+
+<div class="sec"><h2>生活連結：你日日都做緊「圖靈測試」！</h2>
+<div class="box o"><b>☑ 「我唔係機械人」剔格仔（CAPTCHA）</b><p style="margin-top:1mm;">登入網站嗰陣剔「我唔係機械人」、揀晒有紅綠燈嘅相——其實係<b>網站反過嚟測試你係咪人類</b>！呢個叫<b>反向圖靈測試</b>：唔係人測機器，而係機器測人，用嚟擋垃圾程式同機械人攻擊。</p></div></div>
+
+<div class="disc"><b>💬 討論站：班房圖靈測試大挑戰</b><br>兩人一組：一人做「考生」、一人做「神秘對象」（可以扮真人或者扮 AI）。用文字互傳 5 句對話，考生要估對方係真人定扮緊 AI。<div class="guide">引導：扮 AI 嘅同學試用上面三大特徵（超工整、超有禮、冇細節）；考生就用「捉 AI」問題（問即場感受、今日親身經歷）。玩完講吓：邊一招最有效？</div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 4 頁｜真人定AI估估吓</span></div>
+</div>
+
+<!-- ═══════ 第 5 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜5/8</div>
+<h1>【AI 倫理專欄 一】真實新聞：30 年大狀都中伏</h1>
+<div class="sec"><h2>事件重溫：ChatGPT 作嘅「假案例」</h2>
+<p><span class="star">⭐️</span> 美國一位<b>執業 30 年</b>嘅律師 Steven Schwartz，幫客人向航空公司索償。佢冇自己查案例，而係叫 <b>ChatGPT 幫手搵</b>類似嘅成功索償案例，跟住<b>搬字過紙</b>直接放入法庭文件。結果——<b>案例全部係虛構</b>！</p></div>
+
+<svg width="660" height="225" viewBox="0 0 660 225">
+<rect x="10" y="10" width="150" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="10" y="10" width="150" height="24" fill="#FFD600" stroke="#000" stroke-width="3"/><text x="85" y="27" font-size="11.5" font-weight="bold" text-anchor="middle">① 律師樓</text>
+<circle cx="60" cy="75" r="14" fill="#fff" stroke="#000" stroke-width="3"/><path d="M42 105 a18 11 0 0 1 36 0" fill="#fff" stroke="#000" stroke-width="3"/><line x1="52" y1="66" x2="56" y2="70" stroke="#000" stroke-width="2"/><line x1="68" y1="66" x2="64" y2="70" stroke="#000" stroke-width="2"/>
+<rect x="82" y="55" width="70" height="46" rx="10" fill="#fff" stroke="#000" stroke-width="2.5"/>
+<text x="117" y="74" font-size="9.5" text-anchor="middle">幫我搵類似</text><text x="117" y="88" font-size="9.5" text-anchor="middle">索償案例！</text>
+<text x="85" y="130" font-size="10" text-anchor="middle">執業30年嘅</text><text x="85" y="144" font-size="10" text-anchor="middle">Steven 律師</text>
+<text x="85" y="205" font-size="10" font-weight="bold" text-anchor="middle">懶人做法：問 AI</text>
+<rect x="175" y="10" width="150" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="175" y="10" width="150" height="24" fill="#FF5722" stroke="#000" stroke-width="3"/><text x="250" y="27" font-size="11.5" font-weight="bold" fill="#fff" text-anchor="middle">② ChatGPT 回答</text>
+<rect x="185" y="45" width="130" height="60" rx="10" fill="#1A1A1A"/>
+<text x="250" y="63" font-size="9.5" fill="#fff" text-anchor="middle">「呢啲案例係真㗎！」</text>
+<text x="250" y="78" font-size="9.5" fill="#FFD600" text-anchor="middle">「可以喺可信嘅法律</text>
+<text x="250" y="92" font-size="9.5" fill="#FFD600" text-anchor="middle">數據庫搵到」</text>
+<text x="250" y="125" font-size="10" text-anchor="middle">⚠ 其實全部係</text>
+<text x="250" y="139" font-size="10" text-anchor="middle">AI「作」出嚟嘅假案例</text>
+<text x="250" y="160" font-size="10" font-weight="bold" text-anchor="middle">（幻覺 Hallucination）</text>
+<text x="250" y="205" font-size="10" font-weight="bold" text-anchor="middle">答得自信 ≠ 答得真確</text>
+<rect x="340" y="10" width="150" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="340" y="10" width="150" height="24" fill="#FFD600" stroke="#000" stroke-width="3"/><text x="415" y="27" font-size="11.5" font-weight="bold" text-anchor="middle">③ 法庭穿煲</text>
+<circle cx="390" cy="70" r="14" fill="#fff" stroke="#000" stroke-width="3"/><path d="M372 100 a18 11 0 0 1 36 0" fill="#fff" stroke="#000" stroke-width="3"/><rect x="383" y="52" width="14" height="8" fill="#1A1A1A"/>
+<text x="450" y="62" font-size="10" text-anchor="middle">法官：呢啲案例</text>
+<text x="450" y="76" font-size="10" font-weight="bold" text-anchor="middle">根本唔存在！</text>
+<rect x="355" y="112" width="70" height="30" rx="6" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="390" y="125" font-size="9" text-anchor="middle">法庭文件</text><text x="390" y="136" font-size="9" text-anchor="middle">（假案例）</text>
+<line x1="352" y1="110" x2="428" y2="145" stroke="#FF5722" stroke-width="4"/><line x1="428" y1="110" x2="352" y2="145" stroke="#FF5722" stroke-width="4"/>
+<text x="415" y="205" font-size="10" font-weight="bold" text-anchor="middle">對方律師＋法官發現</text>
+<rect x="505" y="10" width="145" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="505" y="10" width="145" height="24" fill="#1A1A1A" stroke="#000" stroke-width="3"/><text x="577" y="27" font-size="11.5" font-weight="bold" fill="#fff" text-anchor="middle">④ 嚴重後果</text>
+<rect x="525" y="48" width="105" height="46" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="577" y="68" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">面臨停牌處分</text>
+<text x="577" y="84" font-size="9.5" fill="#fff" text-anchor="middle">＋ 聽證會制裁</text>
+<text x="577" y="115" font-size="9.5" text-anchor="middle">Steven 宣誓書認錯：</text>
+<text x="577" y="130" font-size="9.5" text-anchor="middle">「唔知內容可能係假，</text>
+<text x="577" y="144" font-size="9.5" text-anchor="middle">非常後悔」</text>
+<text x="577" y="205" font-size="10" font-weight="bold" text-anchor="middle">客人官司都受拖累</text>
+</svg>
+
+<div class="box o"><b>點解 AI 會「講大話」？</b><p style="margin-top:1mm;">ChatGPT 為咗<b>言之成理</b>咁回答你，資料庫搵唔到都會<b>捏造資訊</b>去符合要求——呢種現象叫<b>「幻覺」</b>。律師仲問過 ChatGPT「係咪真」，佢都照樣好有自信咁確認！<b>語氣肯定，唔代表內容真確。</b></p></div>
+
+<div class="quiz"><h3>✓✗ 情景快測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. Steven 律師有問過 ChatGPT「案例係咪真」，得到肯定答覆——咁佢已經做足查證？</div>
+<div class="ans">✗ 唔算。問返同一個 AI 去驗證 AI 自己嘅答案，等於「自己查自己」，一樣會中幻覺。正確做法係去官方法律數據庫親自核對。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 呢單新聞話俾我哋知：只要唔係法律文件，功課用 AI 就唔使驗證？</div>
+<div class="ans">✗ 錯。任何場景都一樣——AI 會作料，功課、報告、溫書筆記用 AI 資料前都要自己 fact-check，否則隨時溫錯書、學錯嘢。</div>
+<div class="disc"><b>💬 討論站：持分者會議</b><br>扮演 <b>Steven 律師、佢嘅客人（索償嗰位）、法官、ChatGPT 開發公司</b>，各自回應：「呢件事邊個要負最大責任？」<div class="guide">引導：律師話「我唔知會假」；客人話「我俾錢請你㗎」；法官要維護法庭公正；AI 公司話「條款寫明資料要自行核實」。你覺得邊方最企唔穩？如果你係老師，學生用 AI 做功課嘅「查證底線」應該係咩？</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 5 頁｜倫理：AI 假資訊</span></div>
+</div>
+
+<!-- ═══════ 第 6 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜6/8</div>
+<h1>【AI 倫理專欄 二】AI 會搶走所有工作？</h1>
+<div class="sec"><h2>真實專訪：馬斯克嘅大膽預言</h2>
+<p><span class="star">⭐️</span> 科技巨頭<b>馬斯克</b>接受英國《經濟學人》90 分鐘專訪，講到 AI 對工作嘅衝擊。佢嘅講法相當震撼：</p></div>
+
+<svg width="660" height="200" viewBox="0 0 660 200">
+<rect x="10" y="10" width="315" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="10" y="10" width="315" height="28" fill="#1A1A1A" stroke="#000" stroke-width="3"/>
+<text x="167" y="30" font-size="13.5" font-weight="bold" fill="#fff" text-anchor="middle">衝擊有幾大？（驚人數字）</text>
+<text x="60" y="85" font-size="30" font-weight="bold" fill="#FF5722">9 成</text>
+<text x="60" y="108" font-size="11">AI 喺軟體工程嘅能力</text>
+<text x="60" y="124" font-size="11">已超越 9 成專業工程師</text>
+<text x="200" y="85" font-size="30" font-weight="bold" fill="#FF5722">50%</text>
+<text x="200" y="108" font-size="11">Anthropic CEO 預測：</text>
+<text x="200" y="124" font-size="11">初階白領工作或消失</text>
+<rect x="35" y="140" width="265" height="36" fill="#fff" stroke="#000" stroke-width="2.5"/>
+<text x="167" y="155" font-size="11" text-anchor="middle">＋ 人形機械人補上體力勞動</text>
+<text x="167" y="170" font-size="11" font-weight="bold" text-anchor="middle">＋ 調查：75% 美國人憂慮 AI</text>
+<rect x="335" y="10" width="315" height="180" fill="#F4F4F4" stroke="#000" stroke-width="3"/>
+<rect x="335" y="10" width="315" height="28" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="492" y="30" font-size="13.5" font-weight="bold" fill="#fff" text-anchor="middle">馬斯克嘅未來藍圖（樂觀？）</text>
+<rect x="360" y="50" width="120" height="50" fill="#FFD600" stroke="#000" stroke-width="3"/>
+<text x="420" y="70" font-size="12" font-weight="bold" text-anchor="middle">全民高收入</text>
+<text x="420" y="88" font-size="10" text-anchor="middle">政府直接派錢</text>
+<rect x="505" y="50" width="120" height="50" fill="#fff" stroke="#000" stroke-width="3"/>
+<text x="565" y="70" font-size="12" font-weight="bold" text-anchor="middle">工作＝興趣</text>
+<text x="565" y="88" font-size="10" text-anchor="middle">好似種菜咁係選擇</text>
+<text x="492" y="130" font-size="11" text-anchor="middle">「將來唔使為生存而工作，</text>
+<text x="492" y="147" font-size="11" text-anchor="middle">勞動變成興趣同選擇。」</text>
+<text x="492" y="175" font-size="11.5" font-weight="bold" text-anchor="middle">但主編質疑：財富點分配？會唔會走向革命？</text>
+</svg>
+
+<div class="sec"><h2>課本觀點對照</h2>
+<p><span class="star">⭐️</span> 課本都講過：聊天機械人雖然減輕簡單問答嘅工作量，但大眾擔心佢會<b>影響人類嘅工作機會</b>；而且 AI 龐大運算量帶嚟極高<b>能源消耗</b>。呢單專訪正正係呢個擔憂嘅「放大版」。</p></div>
+
+<div class="quiz"><h3>✓✗ 情景快測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. 馬斯克話 AI 好快會把「任何工作」都做得比人好——即係中學生而家唔使讀書啦？</div>
+<div class="ans">✗ 唔係。預言未係事實，而且「俾 AI 取代」嘅多數係重複性工作。識得運用 AI、有批判思考同創意嘅人反而更值錢——呢啲正正係要喺學校學嘅嘢。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 專訪入面主編完全同意馬斯克嘅樂觀預言？</div>
+<div class="ans">✗ 唔係。主編多次追問財富重分配、加稅同政治風險，直指如果大家對 AI 嘅恐懼繼續升溫，結果可能唔係烏托邦，而係一場革命。</div>
+<div class="disc"><b>💬 討論站：持分者圓桌會議</b><br>議題：「AI 取代工作，係危機定轉機？」扮演 <b>軟件工程師、大企業老闆、政府官員、中學生（你）</b> 四方發言。<div class="guide">引導：工程師（我份工點算？）｜老闆（效率同成本）｜政府（全民高收入錢從何來？加稅？）｜中學生（我應該裝備咩能力？）。最後諗一諗：如果「工作變成興趣」真係發生，你最想每日做咩？</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 6 頁｜倫理：AI 與就業</span></div>
+</div>
+
+<!-- ═══════ 第 7 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜7/8</div>
+<h1>總結：一圖睇晒全課（Mind Map）</h1>
+
+<svg width="660" height="330" viewBox="0 0 660 330">
+<rect x="260" y="135" width="140" height="60" rx="14" fill="#FFD600" stroke="#000" stroke-width="4"/>
+<text x="330" y="161" font-size="16" font-weight="bold" text-anchor="middle">聊天機械人</text>
+<text x="330" y="180" font-size="10.5" text-anchor="middle">Chatbot</text>
+<line x1="260" y1="150" x2="130" y2="60" stroke="#000" stroke-width="3"/>
+<line x1="260" y1="165" x2="130" y2="165" stroke="#000" stroke-width="3"/>
+<line x1="260" y1="180" x2="130" y2="270" stroke="#000" stroke-width="3"/>
+<line x1="400" y1="150" x2="530" y2="60" stroke="#000" stroke-width="3"/>
+<line x1="400" y1="165" x2="530" y2="165" stroke="#000" stroke-width="3"/>
+<line x1="400" y1="180" x2="530" y2="270" stroke="#000" stroke-width="3"/>
+<rect x="15" y="30" width="115" height="60" rx="10" fill="#fff" stroke="#000" stroke-width="3"/>
+<text x="72" y="52" font-size="12.5" font-weight="bold" text-anchor="middle">定義</text>
+<text x="72" y="68" font-size="9.5" text-anchor="middle">軟件代理</text>
+<text x="72" y="81" font-size="9.5" text-anchor="middle">文字/語音一問一答</text>
+<rect x="15" y="135" width="115" height="60" rx="10" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="72" y="157" font-size="12.5" font-weight="bold" fill="#fff" text-anchor="middle">三大類</text>
+<text x="72" y="173" font-size="9.5" fill="#fff" text-anchor="middle">劇本 / AI / 代理</text>
+<text x="72" y="186" font-size="9.5" fill="#fff" text-anchor="middle">AI＝機器學習＋知識庫</text>
+<rect x="15" y="240" width="115" height="60" rx="10" fill="#fff" stroke="#000" stroke-width="3"/>
+<text x="72" y="262" font-size="12.5" font-weight="bold" text-anchor="middle">條件語句</text>
+<text x="72" y="278" font-size="9.5" text-anchor="middle">如果…就…</text>
+<text x="72" y="291" font-size="9.5" text-anchor="middle">劇本機械人嘅流程</text>
+<rect x="530" y="30" width="115" height="60" rx="10" fill="#1A1A1A" stroke="#000" stroke-width="3"/>
+<text x="587" y="52" font-size="12.5" font-weight="bold" fill="#FFD600" text-anchor="middle">圖靈測試</text>
+<text x="587" y="68" font-size="9.5" fill="#fff" text-anchor="middle">分唔出＝似人</text>
+<text x="587" y="81" font-size="9.5" fill="#fff" text-anchor="middle">似人 ≠ 識思考</text>
+<rect x="530" y="135" width="115" height="60" rx="10" fill="#fff" stroke="#000" stroke-width="3"/>
+<text x="587" y="157" font-size="12.5" font-weight="bold" text-anchor="middle">知識庫限制</text>
+<text x="587" y="173" font-size="9.5" text-anchor="middle">AI 會「幻覺」作料</text>
+<text x="587" y="186" font-size="9.5" text-anchor="middle">自信 ≠ 真確</text>
+<rect x="530" y="240" width="115" height="60" rx="10" fill="#FF5722" stroke="#000" stroke-width="3"/>
+<text x="587" y="262" font-size="12.5" font-weight="bold" fill="#fff" text-anchor="middle">倫理爭議</text>
+<text x="587" y="278" font-size="9.5" fill="#fff" text-anchor="middle">假資訊／私隱／飯碗</text>
+<text x="587" y="291" font-size="9.5" fill="#fff" text-anchor="middle">用 AI 要驗證！</text>
+<rect x="230" y="290" width="200" height="32" fill="#F4F4F4" stroke="#000" stroke-width="2.5"/>
+<text x="330" y="310" font-size="11" font-weight="bold" text-anchor="middle">CAPTCHA＝反向圖靈測試</text>
+</svg>
+
+<div class="quiz"><h3>🎯 情景自測</h3>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">1. 同學話「自動學習機械人」係聊天機械人三大類之一——佢講啱嗎？</div>
+<div class="ans">✗ 錯。三大類係：劇本、人工智慧、代理。「自動學習機械人」唔係本課嘅分類。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">2. 圖書館機械人跟住你揀嘅選項一步步問落去——佢係用緊知識庫做機器學習？</div>
+<div class="ans">✗ 錯。佢係按「程式設計設定咗嘅選項同流程」回應，係劇本機械人；用知識庫做機器學習嘅係 AI 機械人。</div>
+<div class="q" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">3. 「整聊天機械人一定要用人工智能訓練」——呢句說話啱唔啱？</div>
+<div class="ans">✗ 錯。劇本聊天機械人只靠程式流程同預設選項就整到，唔使 AI 訓練。</div>
+<div class="disc"><b>💬 討論站：自測之後……</b>你錯咗邊條？搵返對應嗰頁重溫一次，再用自己的字同隔籬同學講一次正確概念——<b>講得出先係真係識</b>！</div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 7 頁｜總結 Mind Map</span></div>
+</div>
+
+<!-- ═══════ 第 8 頁 ═══════ -->
+<div class="page">
+<div class="kicker">中二普通電腦科｜聊天機械人｜8/8</div>
+<h1>我嘅學習摘錄（康奈爾筆記）</h1>
+<div class="sec" style="display:flex;gap:6mm;font-size:10.5pt;font-weight:700;">
+<span>姓名：＿＿＿＿＿＿</span><span>班別：中二＿＿（信／望／愛／真）</span><span>日期：＿＿＿＿＿＿</span>
+</div>
+<table class="cornell" style="margin-top:3mm;">
+<tr><th style="width:31%;background:#FFD600;font-size:11pt;">關鍵詞・線索欄</th><th style="background:#1A1A1A;color:#fff;font-size:11pt;">筆記欄（用自己的字寫低重點＋例子）</th></tr>
+<tr>
+<td>
+<p class="chk">Q1. 聊天機械人嘅定義係咩？</p>
+<div class="line"></div>
+<p class="chk">Q2. 三大類點分？AI 機械人靠邊兩件法寶？</p>
+<div class="line"></div>
+<p class="chk">Q3. 圖靈測試點樣玩？點解「似人 ≠ 識思考」？</p>
+<div class="line"></div>
+<p class="chk">Q4. 分辨 AI 對話嘅三大蛛絲馬跡係咩？</p>
+<div class="line"></div>
+<p class="chk">Q5. 律師中伏事件教識我哋咩？</p>
+<div class="line"></div>
+<p class="chk">⭐ 我覺得最有趣嘅係…</p>
+</td>
+<td>
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+<div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+</td>
+</tr>
+<tr><td colspan="2" style="background:#F4F4F4;">
+<b>總結欄：用一句說話總結今日所學</b>
+<div class="line"></div><div class="line"></div>
+</td></tr>
+</table>
+<div class="sec box g" style="margin-top:3mm;"><b>自我檢核（做到就打 ✓）</b>
+<div class="two" style="margin-top:1mm;"><div>
+<p class="chk">☐ 我講得出聊天機械人嘅定義同三大類</p>
+<p class="chk">☐ 我解釋到圖靈測試嘅玩法同意義</p>
+<p class="chk">☐ 我識分辨對方係真人定 AI</p>
+</div><div>
+<p class="chk">☐ 我明白知識庫限制同 AI「幻覺」</p>
+<p class="chk">☐ 我記得用 AI 資料前一定要驗證</p>
+<p class="chk">☐ 我識用持分者角度討論 AI 議題</p>
+</div></div></div>
+<div class="foot"><span>嶺南中學｜中二普通電腦科 核心筆記</span><span>第 8 頁｜學習摘錄</span></div>
+</div>
+
+</body>
+</html>
